@@ -1,0 +1,38 @@
+:root {
+  /* Colors (light theme) */
+  --color-bg: #f8fafc;
+  --color-surface: #ffffff;
+  --color-text: #0f172a;
+  --color-text-muted: #475569;
+  --color-primary: #4f46e5;
+  --color-primary-hover: #4338ca;
+  --color-on-primary: #ffffff;
+  --color-border: #e2e8f0;
+
+  /* Typography */
+  --font-sans: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Spacing and shape */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 1rem;
+  --space-4: 1.5rem;
+  --space-5: 2.5rem;
+  --radius: 10px;
+  --shadow: 0 2px 8px rgba(15, 23, 42, 0.08);
+  --container-width: 1100px;
+  --navbar-height: 64px;
+}
+
+/* Dark theme hook, to be driven by ThemeContext later */
+:root[data-theme="dark"] {
+  --color-bg: #0b1120;
+  --color-surface: #131c31;
+  --color-text: #e2e8f0;
+  --color-text-muted: #94a3b8;
+  --color-primary: #818cf8;
+  --color-primary-hover: #a5b4fc;
+  --color-on-primary: #0b1120;
+  --color-border: #1f2a44;
+  --shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+}
