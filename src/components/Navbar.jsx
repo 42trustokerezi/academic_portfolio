@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useTasks } from "../context/TaskContext.jsx";
 
 const links = [
   { to: "/", label: "Home" },
@@ -10,6 +11,7 @@ const links = [
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const { pendingCount } = useTasks();
   const close = () => setOpen(false);
 
   return (
@@ -43,9 +45,19 @@ export default function Navbar() {
                   to={to}
                   end={to === "/"}
                   onClick={close}
-                  className={({ isActive }) => (isActive ? "active" : undefined)}
+                  className={({ isActive }) =>
+                    isActive ? "active" : undefined
+                  }
                 >
                   {label}
+                  {to === "/planner" && pendingCount > 0 && (
+                    <span
+                      className="badge"
+                      aria-label={`${pendingCount} pending tasks`}
+                    >
+                      {pendingCount}
+                    </span>
+                  )}
                 </NavLink>
               </li>
             ))}
