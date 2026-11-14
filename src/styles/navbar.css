@@ -1,0 +1,97 @@
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.navbar__inner {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  min-height: var(--navbar-height);
+}
+
+.navbar__left { display: flex; align-items: center; }
+.navbar__right { display: flex; justify-content: flex-end; }
+
+.navbar__links ul {
+  list-style: none;
+  display: flex;
+  gap: var(--space-4);
+  margin: 0;
+  padding: 0;
+}
+.navbar__links a {
+  text-decoration: none;
+  color: var(--color-text);
+  font-size: 0.95rem;
+  font-weight: 500;
+  padding-block: var(--space-2);
+  border-bottom: 2px solid transparent;
+}
+.navbar__links a:hover,
+.navbar__links a.active {
+  border-bottom-color: var(--color-orange);
+}
+
+.navbar__logo {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: var(--color-ink);
+  color: #ffffff;
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+}
+
+.navbar__contact {
+  display: inline-block;
+  padding: 0.55rem 1.4rem;
+  border-radius: 999px;
+  background: var(--color-gray);
+  color: var(--color-ink);
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.navbar__contact:hover { background: #d0d0d0; }
+
+.navbar__toggle {
+  display: none;
+  flex-direction: column;
+  gap: 8px;
+  background: none;
+  border: 0;
+  padding: var(--space-2) 0;
+  cursor: pointer;
+}
+.navbar__toggle span {
+  width: 28px;
+  height: 2px;
+  background: var(--color-text);
+}
+
+@media (max-width: 860px) {
+  .navbar__toggle { display: flex; }
+
+  .navbar__links {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-3);
+  }
+  .navbar__links.is-open { display: block; }
+  .navbar__links ul { flex-direction: column; gap: var(--space-2); }
+}

@@ -5,13 +5,34 @@ export const CLEAR_COMPLETED = "CLEAR_COMPLETED";
 
 const PRIORITIES = ["low", "medium", "high"];
 
+export const CATEGORIES = [
+  { value: "assignment", label: "Assignment" },
+  { value: "exam", label: "Exam" },
+  { value: "class", label: "Class" },
+  { value: "study", label: "Study" },
+  { value: "other", label: "Other" },
+];
+const CATEGORY_VALUES = CATEGORIES.map((c) => c.value);
+
+export function normalizeCategory(value) {
+  return CATEGORY_VALUES.includes(value) ? value : "other";
+}
+
+export function categoryLabel(value) {
+  return CATEGORIES.find((c) => c.value === normalizeCategory(value)).label;
+}
+
 function generateId() {
   if (typeof crypto !== "undefined" && crypto.randomUUID) return crypto.randomUUID();
   return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
 }
 
-
-export function createTask({ title, dueDate = "", priority = "medium" }) {
+export function createTask({
+  title,
+  dueDate = "",
+  priority = "medium",
+  category = "assignment",
+}) {
   const cleanTitle = String(title ?? "").trim();
   if (!cleanTitle) return null;
 
@@ -20,11 +41,11 @@ export function createTask({ title, dueDate = "", priority = "medium" }) {
     title: cleanTitle,
     dueDate: dueDate || "",
     priority: PRIORITIES.includes(priority) ? priority : "medium",
+    category: normalizeCategory(category),
     completed: false,
     createdAt: Date.now(),
   };
 }
-
 
 export function isValidTask(t) {
   return (

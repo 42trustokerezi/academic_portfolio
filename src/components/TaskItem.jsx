@@ -1,21 +1,11 @@
 import { useTasks } from "../context/TaskContext.jsx";
-
-// Today as YYYY-MM-DD in local time (for overdue checks).
-function todayString() {
-  return new Date().toLocaleDateString("en-CA");
-}
-
-function formatDate(dateString) {
-  return new Date(`${dateString}T00:00:00`).toLocaleDateString(undefined, {
-    day: "numeric",
-    month: "short",
-    year: "numeric",
-  });
-}
+import { categoryLabel, normalizeCategory } from "../context/taskReducer.js";
+import { formatShortDate, todayString } from "../utils/dates.js";
 
 export default function TaskItem({ task }) {
   const { toggleTask, deleteTask } = useTasks();
   const { id, title, dueDate, priority, completed } = task;
+  const category = normalizeCategory(task.category);
   const overdue = Boolean(dueDate) && !completed && dueDate < todayString();
   const inputId = `task-${id}`;
 
@@ -34,11 +24,12 @@ export default function TaskItem({ task }) {
           {title}
         </label>
         <div className="task-item__meta">
-          <span className={`tag tag--${priority}`}>{priority}</span>
+          <span className={`cat cat-${category}`}>{categoryLabel(category)}</span>
+          <span className={`chip chip--${priority}`}>{priority}</span>
           {dueDate && (
             <span className={overdue ? "task-item__due is-overdue" : "task-item__due"}>
               {overdue ? "Overdue: " : "Due: "}
-              {formatDate(dueDate)}
+              {formatShortDate(dueDate)}
             </span>
           )}
         </div>

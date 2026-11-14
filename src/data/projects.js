@@ -1,41 +1,41 @@
-function placeholder(label, background) {
-  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="800" height="500" viewBox="0 0 800 500"><rect width="800" height="500" fill="${background}"/><text x="50%" y="50%" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="700" text-anchor="middle" dominant-baseline="middle">${label}</text></svg>`;
-  return `data:image/svg+xml;charset=UTF-8,${encodeURIComponent(svg)}`;
-}
+import Project_1 from "../assets/images/project_1.png";
+import Project_2 from "../assets/images/project_2.png";
+import Project_3 from "../assets/images/project_3.png";
+
 
 const projects = [
   {
     id: "project-1",
-    title: "Project One",
+    title: "carhub",
     description:
-      "A short description of what this project does, the problem it solves, and your role in building it.",
-    image: placeholder("Project One", "#4f46e5"),
+      "carhub is a car rental service which gives clients access to a wide range of automoblie products based on the preferred brand and make.",
+    image: Project_1,
     imageAlt: "Screenshot of Project One",
     tech: ["React", "CSS", "JavaScript"],
-    liveUrl: "https://example1.com",
-    repoUrl: "https://github.com/your-username/project-one",
+    liveUrl: "https://car-dealership-five-red.vercel.app/",
+    repoUrl: "https://github.com/42trustokerezi/car-dealership",
   },
   {
     id: "project-2",
-    title: "Project Two",
+    title: "7 River Labs",
     description:
-      "A short description of what this project does, the problem it solves, and your role in building it.",
-    image: placeholder("Project Two", "#0f766e"),
+      "7 river labs is a platform which provides patients the opportunity to take medical tests and recieve results anonymously",
+    image: Project_2,
     imageAlt: "Screenshot of Project Two",
-    tech: ["HTML", "CSS", "JavaScript"],
-    liveUrl: "https://example2.com",
-    repoUrl: "https://github.com/your-username/project-two",
+    tech: ["React", "Tailwindcss", "Typescript"],
+    liveUrl: "https://7rl-consumer.vercel.app/",
+    repoUrl: "https://github.com/42trustokerezi/7rl-consumer",
   },
   {
     id: "project-3",
-    title: "Project Three",
+    title: "Movies",
     description:
-      "A short description of what this project does, the problem it solves, and your role in building it.",
-    image: placeholder("Project Three", "#b45309"),
+      "Movies is a personal project showcasing an attempt to create a movie streaming platform.",
+    image: Project_3,
     imageAlt: "Screenshot of Project Three",
-    tech: ["Node.js", "Express", "MongoDB"],
-    liveUrl: "https://example3.com",
-    repoUrl: "https://github.com/your-username/project-three",
+    tech: ["React", "CSS", "MongoDB"],
+    liveUrl: "https://moviehub.vercel.app/",
+    repoUrl: "https://github.com/42trustokerezi/movie-app",
   },
 ];
 

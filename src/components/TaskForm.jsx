@@ -1,12 +1,14 @@
 import { useState } from "react";
 import { useTasks } from "../context/TaskContext.jsx";
+import { CATEGORIES } from "../context/taskReducer.js";
 
 const MAX_TITLE = 100;
 
-export default function TaskForm() {
+export default function TaskForm({ initialDueDate = "" }) {
   const { addTask } = useTasks();
   const [title, setTitle] = useState("");
-  const [dueDate, setDueDate] = useState("");
+  const [dueDate, setDueDate] = useState(initialDueDate);
+  const [category, setCategory] = useState("assignment");
   const [priority, setPriority] = useState("medium");
   const [error, setError] = useState("");
 
@@ -23,9 +25,10 @@ export default function TaskForm() {
       return;
     }
 
-    addTask({ title: trimmed, dueDate, priority });
+    addTask({ title: trimmed, dueDate, category, priority });
     setTitle("");
-    setDueDate("");
+    setDueDate(initialDueDate);
+    setCategory("assignment");
     setPriority("medium");
     setError("");
   }
@@ -60,6 +63,21 @@ export default function TaskForm() {
       </div>
 
       <div className="task-form__field">
+        <label htmlFor="task-category">Category</label>
+        <select
+          id="task-category"
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+        >
+          {CATEGORIES.map((c) => (
+            <option key={c.value} value={c.value}>
+              {c.label}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div className="task-form__field">
         <label htmlFor="task-priority">Priority</label>
         <select
           id="task-priority"
@@ -72,7 +90,7 @@ export default function TaskForm() {
         </select>
       </div>
 
-      <button type="submit" className="btn task-form__submit">
+      <button type="submit" className="btn btn--orange task-form__submit">
         Add task
       </button>
 

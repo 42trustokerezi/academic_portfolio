@@ -1,0 +1,116 @@
+.about {
+  background: var(--color-surface);
+  min-height: calc(100vh - var(--navbar-height));
+  min-height: calc(100svh - var(--navbar-height));
+  display: flex;
+  align-items: center;
+  padding-block: var(--space-5);
+  scroll-margin-top: var(--navbar-height); 
+}
+
+.about > .container {
+  width: 100%;
+}
+
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1.4fr 1fr;
+  gap: var(--space-4);
+  align-items: stretch;
+}
+
+.about_more {
+  margin-top: 5%;
+  padding: 15% 10%;
+  background-color: #231F20;
+  color: #ffffff;
+  border-radius: 22px;
+}
+
+.about-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 22px;
+  padding: var(--space-5) var(--space-4);
+}
+
+.about-card--counter {
+  align-items: center;
+  text-align: center;
+  background: var(--color-ink);
+  color: #ffffff;
+}
+
+.counter__number {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(4.5rem, 10vw, 7rem);
+  font-weight: 300;
+  line-height: 1;
+  font-variant-numeric: tabular-nums; 
+}
+
+.counter__number span[aria-hidden="true"]::after {
+  content: "+";
+  color: var(--color-orange-light);
+}
+
+.counter__label {
+  margin: var(--space-2) 0 0;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  letter-spacing: 0.04em;
+  color: var(--color-orange-light);
+}
+
+.about-card--summary {
+  background: var(--color-orange);
+  color: #ffffff;
+}
+
+.summary__text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 2.4vw, 2rem);
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.about-card--pursuit {
+  background: var(--color-gray);
+  color: var(--color-ink);
+}
+
+.pursuit__title {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  margin: 0 0 var(--space-3);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+.pursuit__title::before {
+  content: "";
+  width: 28px;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--color-orange-strong);
+}
+
+.pursuit__text {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.35;
+}
+
+@media (max-width: 900px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -3,17 +3,19 @@ export default function ProjectCard({ project }) {
 
   return (
     <article className="project-card">
-      <img
-        className="project-card__image"
-        src={image}
-        alt={imageAlt}
-        width="800"
-        height="500"
-        loading="lazy"
-      />
+      <div className="project-card__media">
+        <img
+          className="project-card__image"
+          src={image}
+          alt={imageAlt}
+          width="800"
+          height="500"
+          loading="lazy"
+        />
+      </div>
 
       <div className="project-card__body">
-        <h2 className="project-card__title">{title}</h2>
+        <h3 className="project-card__title">{title}</h3>
         <p className="project-card__description">{description}</p>
 
         <ul className="project-card__tech" aria-label="Technologies used">
@@ -25,7 +27,7 @@ export default function ProjectCard({ project }) {
         <div className="project-card__links">
           {liveUrl && (
             <a
-              className="btn"
+              className="btn btn--orange"
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -36,7 +38,7 @@ export default function ProjectCard({ project }) {
           )}
           {repoUrl && (
             <a
-              className="btn btn--outline"
+              className="btn btn--ghost"
               href={repoUrl}
               target="_blank"
               rel="noopener noreferrer"
