@@ -25,7 +25,7 @@ export default function Planner() {
         </h1>
         <p className="planner__intro">
           Keep track of assignments, exams, and study sessions, see them on the
-          calendar, and jot down notes. Everything is saved in this browser.
+          calendar, and jot down notes.
         </p>
 
         <div className="planner__tabs" role="group" aria-label="Planner views">
